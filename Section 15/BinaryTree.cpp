@@ -72,13 +72,38 @@ void Postorder(Node *p)
     }
 }
 
+int count(Node *root)
+{
+    if (root)
+        return count(root->lchild) + count(root->rchild) + 1;
+    return 0;
+}
+
+int height(Node *root)
+{
+    int x = 0, y = 0;
+    if (root == 0)
+        return 0;
+    x = height(root->lchild);
+    y = height(root->rchild);
+    if (x > y)
+        return x + 1;
+    else
+        return y + 1;
+}
+
 int main()
 {
     createTree();
+    cout << "Count: " << count(root) << endl;
+    cout << "Height: " << height(root) << endl;
+    cout << "Preorder: ";
     Preorder(root);
     cout << endl;
+    cout << "Inorder: ";
     Inorder(root);
     cout << endl;
+    cout << "Postorder: ";
     Postorder(root);
     cout << endl;
     return 0;

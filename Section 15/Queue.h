@@ -28,7 +28,7 @@ void create(Queue *q, int size)
 void enqueue(Queue *q, Node *x)
 {
     if ((q->rear + 1) % q->size == q->front)
-        return;
+        cout << "Queue Full!";
     else
     {
         q->rear = (q->rear + 1) % q->size;
@@ -40,7 +40,7 @@ Node *dequeue(Queue *q)
 {
     Node *x = 0;
     if (q->front == q->rear)
-        return x;
+        cout << "Queue Empty!\n";
     else
     {
         q->front = (q->front + 1) % q->size;
